@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<configuration>
+  <HostsConfiguration>
+
+    <Hosts Name="0">
+      <Host>ya.ru</Host>
+      <Port>80</Port>
+      <ProtocolType>http</ProtocolType>
+      <Delay>2000</Delay>
+    </Hosts>
+    
+    <Hosts Name="1">
+      <Host>reg.ru</Host>
+      <Port>80</Port>
+      <ProtocolType>tcp</ProtocolType>
+      <Delay>2000</Delay>
+    </Hosts>
+    
+    <Hosts Name="2">
+      <Host>vk.com</Host>
+      <Port>8003</Port>
+      <ProtocolType>icmp</ProtocolType>
+      <Delay>2000</Delay>
+    </Hosts>
+
+  </HostsConfiguration>
+</configuration>

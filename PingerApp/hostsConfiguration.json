@@ -1,0 +1,27 @@
+{
+  "HostsConfiguration": {
+
+    "Hosts": [
+      {
+        "Host": "yaru",
+        "Port": 80,
+        "ProtocolType": "http",
+        "Delay": 2000
+      },
+
+      {
+        "Host": "reg.ru",
+        "Port": 80,
+        "ProtocolType": "tcp",
+        "Delay": 2000
+      },
+
+      {
+        "Host": "vk.com",
+        "Port": 833,
+        "ProtocolType": "icmp",
+        "Delay": 2000
+      }
+    ]
+  }
+}
