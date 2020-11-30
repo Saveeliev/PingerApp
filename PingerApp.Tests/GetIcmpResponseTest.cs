@@ -42,7 +42,7 @@ namespace PingerApp.Tests
             {
                 Host = "ya.ru",
                 Port = 80,
-                ProtocolType = ProtocolType.icmp,
+                ProtocolType = ProtocolType.Icmp,
                 Delay = 2000
             };
         }

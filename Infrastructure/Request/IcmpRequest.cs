@@ -32,18 +32,18 @@ namespace Infrastructure.Request
                 if (success)
                 {
                     socket.EndConnect(connectResult);
-                    result.Status = ResponseStatus.OK;
+                    result.Status = ResponseStatus.Ok;
                 }
                 else
                 {
                     socket.Close();
-                    result.Status = ResponseStatus.FAIL;
+                    result.Status = ResponseStatus.Fail;
                 }
             }
             catch (Exception)
             {
                 socket.Close();
-                result.Status = ResponseStatus.FAIL;
+                result.Status = ResponseStatus.Fail;
             }
 
 

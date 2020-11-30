@@ -9,9 +9,9 @@ namespace Infrastructure.Services.RequestProvider
         {
             switch(protocolType)
             {
-                case ProtocolType.http: return new HttpRequest();
-                case ProtocolType.tcp: return new TcpRequest();
-                case ProtocolType.icmp: return new IcmpRequest();
+                case ProtocolType.Http: return new HttpRequest();
+                case ProtocolType.Tcp: return new TcpRequest();
+                case ProtocolType.Icmp: return new IcmpRequest();
             }
 
             return null;

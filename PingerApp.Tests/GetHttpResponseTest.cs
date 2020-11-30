@@ -44,7 +44,7 @@ namespace PingerApp.Tests
             {
                 Host = "ya.ru",
                 Port = 80,
-                ProtocolType = ProtocolType.http,
+                ProtocolType = ProtocolType.Http,
                 Delay = 2000
             };
         }

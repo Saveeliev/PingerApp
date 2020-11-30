@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO.Enums;
+using System;
 
 namespace DTO.Response
 {

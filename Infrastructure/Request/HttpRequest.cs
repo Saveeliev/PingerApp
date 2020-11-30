@@ -31,14 +31,14 @@ namespace Infrastructure.Request
 
                 var date = response.Headers.Get("Date");
                 result.Date = DateTime.Parse(date);
-                result.Status = ResponseStatus.OK;
+                result.Status = ResponseStatus.Ok;
                 result.StatusCode = response.StatusCode;
 
                 response.Close();
             }
             catch(Exception)
             {
-                result.Status = ResponseStatus.FAIL;
+                result.Status = ResponseStatus.Fail;
                 result.Date = DateTime.Now;
             }
 

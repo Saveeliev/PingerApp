@@ -1,4 +1,6 @@
-﻿namespace DTO.Request
+﻿using DTO.Enums;
+
+namespace DTO.Request
 {
     public class RequestDto
     {
