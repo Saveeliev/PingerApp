@@ -8,11 +8,11 @@ namespace PingerApp.Pinger
 {
     public class PingerManager : IPingerManager
     {
-        private readonly IPingService _pingService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public PingerManager(IPingService pingService)
+        public PingerManager(IServiceProvider serviceProvider)
         {
-            _pingService = pingService ?? throw new ArgumentNullException(nameof(pingService));
+            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
         public void StartPinger(RequestDto[] requests)
         {
@@ -24,7 +24,9 @@ namespace PingerApp.Pinger
 
                 if (result.IsValid)
                 {
-                    _pingService.Ping(request);
+                    var service = _serviceProvider.GetService(typeof(IPingService));
+                    var pingService = (PingService)service;
+                    pingService.Ping(request);
                 }
                 else
                 {

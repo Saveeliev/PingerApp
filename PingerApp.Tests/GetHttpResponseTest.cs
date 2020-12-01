@@ -1,6 +1,5 @@
-using DTO;
+using DTO.Enums;
 using DTO.Request;
-using DTO.Response;
 using Infrastructure.Request;
 using NUnit.Framework;
 using System;
@@ -27,7 +26,7 @@ namespace PingerApp.Tests
         [Test]
         public void Test_GoodRequest()
         {
-            var result = (HttpResponseDto)_request.GetResponse(GetRequestDto());
+            var result = _request.GetResponse(GetRequestDto());
 
             // Assert
             Assert.IsNotNull(result);
@@ -35,7 +34,6 @@ namespace PingerApp.Tests
             Assert.IsNotNull(result.Date);
             Assert.IsNotNull(result.Host);
             Assert.IsNotNull(result.Status);
-            Assert.IsNotNull(result.StatusCode);
         }
 
         private RequestDto GetRequestDto()
@@ -45,7 +43,7 @@ namespace PingerApp.Tests
                 Host = "ya.ru",
                 Port = 80,
                 ProtocolType = ProtocolType.Http,
-                Delay = 2000
+                DelayInMilliseconds = 2000
             };
         }
     }

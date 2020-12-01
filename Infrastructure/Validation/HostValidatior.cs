@@ -1,6 +1,7 @@
 ﻿using DTO.Request;
 using FluentValidation;
-using Infrastructure.Options;
+using System;
+using System.Net;
 
 namespace Infrastructure.Validation
 {
@@ -14,10 +15,16 @@ namespace Infrastructure.Validation
                 .Matches(@"^([a-zA-Z0-9\-]+\.)+[a-z]+$");
 
             RuleFor(host => host.Port)
-                .NotEmpty();
+                .NotEmpty()
+                .GreaterThan(0)
+                .LessThan(65535);
 
-            RuleFor(host => host.Delay)
-                .NotEmpty();
+            RuleFor(host => host.DelayInMilliseconds)
+                .NotEmpty()
+                .GreaterThan(0);
+
+            RuleFor(host => host.ValidStatusCode)
+                .Must(statusCode => statusCode == 0 || Enum.IsDefined(typeof(HttpStatusCode), statusCode));
         }
     }
 }

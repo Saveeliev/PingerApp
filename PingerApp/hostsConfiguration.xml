@@ -6,21 +6,22 @@
       <Host>ya.ru</Host>
       <Port>80</Port>
       <ProtocolType>http</ProtocolType>
-      <Delay>2000</Delay>
+      <DelayInMilliseconds>2000</DelayInMilliseconds>
+      <ValidStatusCode>200</ValidStatusCode>
     </Hosts>
     
     <Hosts Name="1">
       <Host>reg.ru</Host>
       <Port>80</Port>
       <ProtocolType>tcp</ProtocolType>
-      <Delay>2000</Delay>
+      <DelayInMilliseconds>2000</DelayInMilliseconds>
     </Hosts>
     
     <Hosts Name="2">
       <Host>vk.com</Host>
       <Port>8003</Port>
       <ProtocolType>icmp</ProtocolType>
-      <Delay>2000</Delay>
+      <DelayInMilliseconds>2000</DelayInMilliseconds>
     </Hosts>
 
   </HostsConfiguration>

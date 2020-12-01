@@ -1,14 +1,15 @@
-﻿using DTO;
+﻿using DTO.Enums;
 using DTO.Request;
 using DTO.Response;
 using System;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Request
 {
     public class IcmpRequest : IRequest
     {
-        public ResponseDto GetResponse(RequestDto requestDto)
+        public async Task<ResponseDto> GetResponse(RequestDto requestDto)
         {
             if (requestDto is null)
             {
@@ -19,7 +20,7 @@ namespace Infrastructure.Request
 
             IAsyncResult connectResult = socket.BeginConnect(requestDto.Host, requestDto.Port, null, null);
 
-            var success = connectResult.AsyncWaitHandle.WaitOne(requestDto.Delay, true);
+            var success = connectResult.AsyncWaitHandle.WaitOne(requestDto.DelayInMilliseconds, true);
 
             var result = new ResponseDto
             {

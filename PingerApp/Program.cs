@@ -12,9 +12,11 @@ namespace PingerApp
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseDefaultServiceProvider(options => options.ValidateScopes = false)
                 .ConfigureAppConfiguration(cfg => cfg.AddJsonFile("hostsConfiguration.json"))
-                .ConfigureServices((hostContext, services) => {
-                    Startup.Configure(hostContext, services); 
+                .ConfigureServices((hostContext, services) =>
+                {
+                    Startup.Configure(hostContext, services);
                 });
     }
 }

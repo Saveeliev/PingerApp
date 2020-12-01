@@ -1,11 +1,11 @@
-﻿using DTO;
+﻿using DTO.Enums;
 using Infrastructure.Request;
 
-namespace Infrastructure.Services.RequestProvider
+namespace Infrastructure.Services.RequestProviderNameSpace
 {
-    public class RequestProvider : IRequestProvider
+    public class RequestProvider
     {
-        public IRequest GetRequestByProtocol(ProtocolType protocolType)
+        public static IRequest GetRequestByProtocol(ProtocolType protocolType)
         {
             switch(protocolType)
             {

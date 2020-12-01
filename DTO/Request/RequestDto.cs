@@ -1,4 +1,5 @@
 ﻿using DTO.Enums;
+using System.Net;
 
 namespace DTO.Request
 {
@@ -7,6 +8,7 @@ namespace DTO.Request
         public string Host { get; set; }
         public int Port { get; set; }
         public ProtocolType ProtocolType { get; set; }
-        public int Delay { get; set; }
+        public int DelayInMilliseconds { get; set; }
+        public HttpStatusCode ValidStatusCode { get; set; }
     }
 }

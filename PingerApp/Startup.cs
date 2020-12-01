@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Options;
 using Infrastructure.Services.PingService;
-using Infrastructure.Services.RequestProvider;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PingerApp.Pinger;
@@ -13,9 +12,8 @@ namespace PingerApp
         {
             services.Configure<HostsConfiguration>(hostBuilderContext.Configuration.GetSection(nameof(HostsConfiguration)));
             services.AddHostedService<Worker>();
-            services.AddSingleton<IPingService, PingService>();
-            services.AddSingleton<IRequestProvider, RequestProvider>();
-            services.AddSingleton<IPingerManager, PingerManager>();
+            services.AddTransient<IPingService, PingService>();
+            services.AddTransient<IPingerManager, PingerManager>();
         }
     }
 }

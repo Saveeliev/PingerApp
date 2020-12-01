@@ -3,6 +3,7 @@
     public enum ResponseStatus
     {
         Ok,
-        Fail
+        Fail,
+        InvalidResponse
     }
 }
