@@ -1,10 +1,11 @@
 ﻿using DTO.Request;
-using Infrastructure.Handlers.LogHandler;
+using Infrastructure.Handlers;
 using Infrastructure.Options;
 using Infrastructure.Services.LoggerProviderNameSpace;
 using Infrastructure.Services.PingServiceNameSpace;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 
 namespace Infrastructure.Services.LogService
 {
@@ -20,6 +21,7 @@ namespace Infrastructure.Services.LogService
             _loggerProvider = loggerProvider ?? throw new ArgumentNullException(nameof(loggerProvider));
             _options = options.Value ?? throw new ArgumentNullException(nameof(options));
         }
+
         public void Log(RequestDto requestDto)
         {
             var service = _serviceProvider.GetService(typeof(IPingService));

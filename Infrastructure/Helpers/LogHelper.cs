@@ -7,6 +7,11 @@ namespace Infrastructure.Helpers
     {
         public static string GetLogString(ResponseDto responseDto)
         {
+            if (responseDto is null)
+            {
+                throw new System.ArgumentNullException(nameof(responseDto));
+            }
+
             var responseStatus = responseDto.Status;
             var status = responseDto.Status.ToString();
 

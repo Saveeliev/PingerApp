@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Infrastructure.Services.PingServiceNameSpace
 {
-    public class PingService : IPingService
+    public class PingService : IPingService, IDisposable
     {
         public event EventHandler<PingHandlerArgs> PingEvent;
         private RequestDto _request;
@@ -34,6 +34,10 @@ namespace Infrastructure.Services.PingServiceNameSpace
                 PingEvent?.Invoke(this, new PingHandlerArgs { ResponseDto = response });
                 _response = response;
             }
+        }
+        public void Dispose()
+        {
+            PingEvent = null;
         }
     }
 }
