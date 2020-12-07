@@ -3,7 +3,7 @@ using Infrastructure.Request;
 
 namespace Infrastructure.Services.RequestProviderNameSpace
 {
-    public class RequestProvider
+    public static class RequestProvider
     {
         public static IRequest GetRequestByProtocol(ProtocolType protocolType)
         {

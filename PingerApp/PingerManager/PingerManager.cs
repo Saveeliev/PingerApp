@@ -1,18 +1,17 @@
 ﻿using DTO.Request;
-using Infrastructure.Services.PingService;
+using Infrastructure.Services.LogService;
 using Infrastructure.Validation;
 using System;
-using System.Collections.Generic;
 
 namespace PingerApp.Pinger
 {
     public class PingerManager : IPingerManager
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly ILogService _logService;
 
-        public PingerManager(IServiceProvider serviceProvider)
+        public PingerManager(ILogService logService)
         {
-            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _logService = logService ?? throw new ArgumentNullException(nameof(logService));
         }
         public void StartPinger(RequestDto[] requests)
         {
@@ -24,9 +23,7 @@ namespace PingerApp.Pinger
 
                 if (result.IsValid)
                 {
-                    var service = _serviceProvider.GetService(typeof(IPingService));
-                    var pingService = (PingService)service;
-                    pingService.Ping(request);
+                    _logService.Log(request);
                 }
                 else
                 {

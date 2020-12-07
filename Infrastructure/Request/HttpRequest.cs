@@ -9,7 +9,7 @@ namespace Infrastructure.Request
 {
     public class HttpRequest : IRequest
     {
-        public async Task<ResponseDto> GetResponse(RequestDto requestDto)
+        public async Task<ResponseDto> GetResponseAsync(RequestDto requestDto)
         {
             if (requestDto is null)
             {
@@ -19,7 +19,6 @@ namespace Infrastructure.Request
             var uri = new UriBuilder(requestDto.ProtocolType.ToString(), requestDto.Host, requestDto.Port);
 
             var request = WebRequest.CreateHttp(uri.Uri);
-            request.Timeout = requestDto.DelayInMilliseconds;
 
             var result = new ResponseDto()
             {

@@ -2,39 +2,36 @@
 using DTO.Response;
 using Infrastructure.Handlers;
 using Infrastructure.Services.RequestProviderNameSpace;
+using System;
 using System.Timers;
 
-namespace Infrastructure.Services.PingService
+namespace Infrastructure.Services.PingServiceNameSpace
 {
     public class PingService : IPingService
     {
-        public delegate void PingHandler(ResponseDto response);
-        public event PingHandler PingEvent;
+        public event EventHandler<PingHandlerArgs> PingEvent;
         private RequestDto _request;
         private ResponseDto _response;
         public void Ping(RequestDto requestDto)
         {
             _request = requestDto;
 
-            PingEvent += LogResponseHandler.WriteResponseInConsole;
-            PingEvent += LogResponseHandler.WriteResponseInFile;
-
             var timer = new Timer();
-            timer.Interval = requestDto.DelayInMilliseconds;
             timer.Elapsed += Timer_Elapsed;
+            timer.Interval = requestDto.DelayInMilliseconds;
             timer.AutoReset = true;
             timer.Enabled = true;
             timer.Start();
         }
 
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             var request = RequestProvider.GetRequestByProtocol(_request.ProtocolType);
-            var response = request.GetResponse(_request).Result;
+            var response = await request.GetResponseAsync(_request);
 
             if (_response == null || response.Status != _response.Status)
             {
-                PingEvent?.Invoke(response);
+                PingEvent?.Invoke(this, new PingHandlerArgs { ResponseDto = response });
                 _response = response;
             }
         }

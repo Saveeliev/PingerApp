@@ -9,7 +9,7 @@ namespace Infrastructure.Request
 {
     public class IcmpRequest : IRequest
     {
-        public async Task<ResponseDto> GetResponse(RequestDto requestDto)
+        public async Task<ResponseDto> GetResponseAsync(RequestDto requestDto)
         {
             if (requestDto is null)
             {
@@ -20,7 +20,7 @@ namespace Infrastructure.Request
 
             IAsyncResult connectResult = socket.BeginConnect(requestDto.Host, requestDto.Port, null, null);
 
-            var success = connectResult.AsyncWaitHandle.WaitOne(requestDto.DelayInMilliseconds, true);
+            var success = connectResult.AsyncWaitHandle.WaitOne();
 
             var result = new ResponseDto
             {

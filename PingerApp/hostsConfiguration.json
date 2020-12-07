@@ -24,5 +24,13 @@
         "DelayInMilliseconds": 4000
       }
     ]
+  },
+
+  "LogOptions": {
+    "PathToLogFile": "D://StaticFiles/logs.log",
+    "LogWays": [
+      "Console",
+      "File"
+    ]
   }
 }

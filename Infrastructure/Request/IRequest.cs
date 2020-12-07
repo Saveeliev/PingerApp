@@ -7,6 +7,6 @@ namespace Infrastructure.Request
 {
     public interface IRequest
     {
-        Task<ResponseDto> GetResponse(RequestDto req);
+        Task<ResponseDto> GetResponseAsync(RequestDto req);
     }
 }

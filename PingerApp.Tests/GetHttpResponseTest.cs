@@ -1,8 +1,11 @@
 using DTO.Enums;
 using DTO.Request;
+using DTO.Response;
 using Infrastructure.Request;
+using Moq;
 using NUnit.Framework;
 using System;
+using System.Threading.Tasks;
 
 namespace PingerApp.Tests
 {
@@ -15,22 +18,22 @@ namespace PingerApp.Tests
         {
             _request = new HttpRequest();
         }
-        
+
         [Test]
         public void Test_ExpectedExceptionWhenRequestIsNull()
         {
             // Assert
-            Assert.Throws<ArgumentNullException>(() => _request.GetResponse(null));
+            Assert.ThrowsAsync<ArgumentNullException>(async () => await _request.GetResponseAsync(null));
         }
 
         [Test]
-        public void Test_GoodRequest()
+        public async Task Test_GoodRequest()
         {
-            var result = _request.GetResponse(GetRequestDto());
+            // Act
+            var result = await _request.GetResponseAsync(GetRequestDto());
 
             // Assert
             Assert.IsNotNull(result);
-
             Assert.IsNotNull(result.Date);
             Assert.IsNotNull(result.Host);
             Assert.IsNotNull(result.Status);
