@@ -12,7 +12,7 @@ namespace Infrastructure.Services.LoggerProvider
 
         public LoggerProvider(IOptions<LogOptions> options)
         {
-            _options = options ?? throw new System.ArgumentNullException(nameof(options));
+            _options = options ?? throw new ArgumentNullException(nameof(options));
         }
         public ILogger GetLogger(LogWay logWay)
         {

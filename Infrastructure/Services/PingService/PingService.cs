@@ -12,7 +12,7 @@ namespace Infrastructure.Services.PingService
         public event EventHandler<PingHandlerArgs> PingEvent;
         private RequestDto _request;
         private ResponseDto _response;
-        private List<Timer> _timers = new List<Timer>();
+        private readonly List<Timer> _timers = new List<Timer>();
         public void Ping(RequestDto requestDto)
         {
             _request = requestDto;

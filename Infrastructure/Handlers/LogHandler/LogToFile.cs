@@ -8,7 +8,7 @@ namespace Infrastructure.Handlers.LogHandler
 {
     public class LogToFile : ILogger
     {
-        private static object _locker = 0;
+        private static readonly object _locker = 0;
         private readonly LogOptions _options;
 
         public LogToFile(IOptions<LogOptions> options)
