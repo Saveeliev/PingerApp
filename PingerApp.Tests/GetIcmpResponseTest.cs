@@ -1,8 +1,6 @@
 ﻿using DTO.Enums;
 using DTO.Request;
-using DTO.Response;
 using Infrastructure.Request;
-using Moq;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;

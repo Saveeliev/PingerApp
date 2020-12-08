@@ -1,10 +1,10 @@
 using Infrastructure.Options;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using PingerApp.Pinger;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using PingerApp.PingerManager;
 
 namespace PingerApp
 {

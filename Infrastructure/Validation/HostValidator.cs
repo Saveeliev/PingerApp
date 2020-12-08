@@ -5,9 +5,9 @@ using System.Net;
 
 namespace Infrastructure.Validation
 {
-    public class HostValidatior : AbstractValidator<RequestDto>
+    public class HostValidator : AbstractValidator<RequestDto>
     {
-        public HostValidatior()
+        public HostValidator()
         {
             RuleFor(host => host.Host)
                 .MinimumLength(5)

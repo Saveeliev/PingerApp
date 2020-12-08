@@ -3,7 +3,7 @@ using Infrastructure.Handlers.LogHandler;
 using Infrastructure.Options;
 using Microsoft.Extensions.Options;
 
-namespace Infrastructure.Services.LoggerProviderNameSpace
+namespace Infrastructure.Services.LoggerProvider
 {
     public class LoggerProvider : ILoggerProvider
     {

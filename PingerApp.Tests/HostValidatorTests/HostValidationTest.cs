@@ -9,12 +9,12 @@ namespace PingerApp.Tests.HostValidatorTests
 {
     public class HostValidationTest
     {
-        private HostValidatior _validator;
+        private HostValidator _validator;
 
         [SetUp]
         public void SetUp()
         {
-            _validator = new HostValidatior();
+            _validator = new HostValidator();
         }
 
         [Test]

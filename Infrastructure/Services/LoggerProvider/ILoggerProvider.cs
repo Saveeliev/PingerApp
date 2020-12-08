@@ -1,7 +1,7 @@
 ﻿using DTO.Enums;
 using Infrastructure.Handlers.LogHandler;
 
-namespace Infrastructure.Services.LoggerProviderNameSpace
+namespace Infrastructure.Services.LoggerProvider
 {
     public interface ILoggerProvider
     {

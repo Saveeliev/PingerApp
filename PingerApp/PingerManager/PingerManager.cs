@@ -1,9 +1,9 @@
-﻿using DTO.Request;
+﻿using System;
+using DTO.Request;
 using Infrastructure.Services.LogService;
 using Infrastructure.Validation;
-using System;
 
-namespace PingerApp.Pinger
+namespace PingerApp.PingerManager
 {
     public class PingerManager : IPingerManager
     {
@@ -15,7 +15,7 @@ namespace PingerApp.Pinger
         }
         public void StartPinger(RequestDto[] requests)
         {
-            var validator = new HostValidatior();
+            var validator = new HostValidator();
 
             foreach (var request in requests)
             {

@@ -1,7 +1,7 @@
 ﻿using DTO.Enums;
 using Infrastructure.Request;
 
-namespace Infrastructure.Services.RequestProviderNameSpace
+namespace Infrastructure.Services.RequestProvider
 {
     public static class RequestProvider
     {

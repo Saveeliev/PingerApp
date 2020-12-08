@@ -1,8 +1,8 @@
-﻿using DTO.Request;
+﻿using System;
+using DTO.Request;
 using Infrastructure.Handlers;
-using System;
 
-namespace Infrastructure.Services.PingServiceNameSpace
+namespace Infrastructure.Services.PingService
 {
     public interface IPingService
     {

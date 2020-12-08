@@ -16,9 +16,9 @@ namespace Infrastructure.Request
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Raw, System.Net.Sockets.ProtocolType.Icmp);
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Raw, System.Net.Sockets.ProtocolType.Icmp);
 
-            IAsyncResult connectResult = socket.BeginConnect(requestDto.Host, requestDto.Port, null, null);
+            var connectResult = socket.BeginConnect(requestDto.Host, requestDto.Port, null, null);
 
             var success = connectResult.AsyncWaitHandle.WaitOne();
 

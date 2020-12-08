@@ -1,7 +1,6 @@
 ﻿using DTO.Request;
-using System.Collections.Generic;
 
-namespace PingerApp.Pinger
+namespace PingerApp.PingerManager
 {
     public interface IPingerManager
     {

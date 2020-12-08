@@ -19,7 +19,7 @@ namespace Infrastructure.Helpers
             {
                 status = "Invalid response";
             }
-            return string.Format("{0} {1} {2}", responseDto.Date, responseDto.Host, status);
+            return $"{responseDto.Date} {responseDto.Host} {status}";
         }
     }
 }

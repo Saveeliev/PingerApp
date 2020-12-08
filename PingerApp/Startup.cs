@@ -1,11 +1,10 @@
-﻿using Infrastructure.Handlers.LogHandler;
-using Infrastructure.Options;
-using Infrastructure.Services.LoggerProviderNameSpace;
+﻿using Infrastructure.Options;
+using Infrastructure.Services.LoggerProvider;
 using Infrastructure.Services.LogService;
-using Infrastructure.Services.PingServiceNameSpace;
+using Infrastructure.Services.PingService;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PingerApp.Pinger;
+using PingerApp.PingerManager;
 
 namespace PingerApp
 {
@@ -18,7 +17,7 @@ namespace PingerApp
             services.AddHostedService<Worker>();
             services.AddTransient<IPingService, PingService>();
             services.AddTransient<ILogService, LogService>();
-            services.AddTransient<IPingerManager, PingerManager>();
+            services.AddTransient<IPingerManager, PingerManager.PingerManager>();
             services.AddTransient<ILoggerProvider, LoggerProvider>();
         }
     }

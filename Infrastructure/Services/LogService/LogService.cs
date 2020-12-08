@@ -1,11 +1,9 @@
 ﻿using DTO.Request;
-using Infrastructure.Handlers;
 using Infrastructure.Options;
-using Infrastructure.Services.LoggerProviderNameSpace;
-using Infrastructure.Services.PingServiceNameSpace;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
+using Infrastructure.Services.LoggerProvider;
+using Infrastructure.Services.PingService;
 
 namespace Infrastructure.Services.LogService
 {
@@ -25,7 +23,7 @@ namespace Infrastructure.Services.LogService
         public void Log(RequestDto requestDto)
         {
             var service = _serviceProvider.GetService(typeof(IPingService));
-            var pingService = (PingService)service;
+            var pingService = (PingService.PingService)service;
 
             var logWays = _options.LogWays;
 
