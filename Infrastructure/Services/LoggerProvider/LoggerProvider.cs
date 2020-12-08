@@ -1,4 +1,5 @@
-﻿using DTO.Enums;
+﻿using System;
+using DTO.Enums;
 using Infrastructure.Handlers.LogHandler;
 using Infrastructure.Options;
 using Microsoft.Extensions.Options;
@@ -19,9 +20,8 @@ namespace Infrastructure.Services.LoggerProvider
             {
                 case LogWay.Console: return new LogToConsole();
                 case LogWay.File: return new LogToFile(_options);
+                default: throw new Exception("No logger exists for this log way");
             }
-
-            return null;
         }
     }
 }

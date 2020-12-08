@@ -1,4 +1,5 @@
-﻿using DTO.Enums;
+﻿using System;
+using DTO.Enums;
 using Infrastructure.Request;
 
 namespace Infrastructure.Services.RequestProvider
@@ -12,9 +13,8 @@ namespace Infrastructure.Services.RequestProvider
                 case ProtocolType.Http: return new HttpRequest();
                 case ProtocolType.Tcp: return new TcpRequest();
                 case ProtocolType.Icmp: return new IcmpRequest();
+                default: throw new Exception("No request type exists for this protocol type");
             }
-
-            return null;
         }
     }
 }

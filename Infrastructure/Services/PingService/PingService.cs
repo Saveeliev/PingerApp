@@ -23,7 +23,7 @@ namespace Infrastructure.Services.PingService
             timer.AutoReset = true;
             timer.Enabled = true;
             timer.Start();
-            
+
             _timers.Add(timer);
         }
 
