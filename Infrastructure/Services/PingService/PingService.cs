@@ -4,15 +4,23 @@ using System.Timers;
 using DTO.Request;
 using DTO.Response;
 using Infrastructure.Handlers;
+using Infrastructure.Services.RequestFactory;
 
 namespace Infrastructure.Services.PingService
 {
     public class PingService : IPingService, IDisposable
     {
+        private readonly IRequestFactory _requestFactory;
         public event EventHandler<PingHandlerArgs> PingEvent;
         private RequestDto _request;
         private ResponseDto _response;
         private readonly List<Timer> _timers = new List<Timer>();
+
+        public PingService(IRequestFactory requestFactory)
+        {
+            _requestFactory = requestFactory ?? throw new ArgumentNullException(nameof(requestFactory));
+        }
+        
         public void Ping(RequestDto requestDto)
         {
             _request = requestDto;
@@ -29,7 +37,7 @@ namespace Infrastructure.Services.PingService
 
         private async void TimerHandler(object sender, ElapsedEventArgs e)
         {
-            var request = RequestProvider.RequestProvider.GetRequestByProtocol(_request.ProtocolType);
+            var request = _requestFactory.GetRequestByProtocol(_request.ProtocolType);
             var response = await request.GetResponseAsync(_request);
 
             if (_response == null || response.Status != _response.Status)
@@ -38,6 +46,7 @@ namespace Infrastructure.Services.PingService
                 _response = response;
             }
         }
+
         public void Dispose()
         {
             PingEvent = null;

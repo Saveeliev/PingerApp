@@ -2,11 +2,11 @@
 using DTO.Enums;
 using Infrastructure.Request;
 
-namespace Infrastructure.Services.RequestProvider
+namespace Infrastructure.Services.RequestFactory
 {
-    public static class RequestProvider
+    public class RequestFactory : IRequestFactory
     {
-        public static IRequest GetRequestByProtocol(ProtocolType protocolType)
+        public IRequest GetRequestByProtocol(ProtocolType protocolType)
         {
             switch(protocolType)
             {

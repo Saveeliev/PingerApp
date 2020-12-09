@@ -1,9 +1,9 @@
 ﻿using DTO.Enums;
 using Infrastructure.Handlers.LogHandler;
 
-namespace Infrastructure.Services.LoggerProvider
+namespace Infrastructure.Services.LoggerFactory
 {
-    public interface ILoggerProvider
+    public interface ILoggerFactory
     {
         public ILogger GetLogger(LogWay logWay);
     }
