@@ -4,17 +4,21 @@ using Infrastructure.Request;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace PingerApp.Tests
 {
     public class GetHttpResponseTest
     {
         private HttpRequest _request;
+        
 
         [SetUp]
         public void SetUp()
         {
-            _request = new HttpRequest();
+            var mock = new Mock<ILogger<HttpRequest>>();
+            _request = new HttpRequest(mock.Object);
         }
 
         [Test]

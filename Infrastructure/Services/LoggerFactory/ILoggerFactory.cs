@@ -5,6 +5,6 @@ namespace Infrastructure.Services.LoggerFactory
 {
     public interface ILoggerFactory
     {
-        public ILogger GetLogger(LogWay logWay);
+        public ILogHandler GetLogger(LogWay logWay);
     }
 }

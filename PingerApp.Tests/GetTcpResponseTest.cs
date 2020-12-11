@@ -4,6 +4,8 @@ using Infrastructure.Request;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace PingerApp.Tests
 {
@@ -14,7 +16,8 @@ namespace PingerApp.Tests
         [SetUp]
         public void SetUp()
         {
-            _request = new TcpRequest();
+            var mock = new Mock<ILogger<TcpRequest>>();
+            _request = new TcpRequest(mock.Object);
         }
 
         [Test]

@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Handlers.LogHandler;
 using Infrastructure.Options;
+using Infrastructure.Request;
 using Infrastructure.Services.LoggerFactory;
 using Infrastructure.Services.LogService;
 using Infrastructure.Services.PingService;
@@ -26,6 +27,9 @@ namespace PingerApp
             services.AddTransient<HostValidator>();
             services.AddTransient<LogToConsole>();
             services.AddTransient<LogToFile>();
+            services.AddTransient<HttpRequest>();
+            services.AddTransient<IcmpRequest>();
+            services.AddTransient<TcpRequest>();
         }
     }
 }

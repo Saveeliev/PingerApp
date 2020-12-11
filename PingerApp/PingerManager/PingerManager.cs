@@ -3,6 +3,7 @@ using DTO.Request;
 using Infrastructure.Services.LogService;
 using Infrastructure.Validation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace PingerApp.PingerManager
 {
@@ -10,11 +11,13 @@ namespace PingerApp.PingerManager
     {
         private readonly ILogService _logService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly ILogger<PingerManager> _logger;
 
-        public PingerManager(ILogService logService, IServiceProvider serviceProvider)
+        public PingerManager(ILogService logService, IServiceProvider serviceProvider, ILogger<PingerManager> logger)
         {
             _logService = logService ?? throw new ArgumentNullException(nameof(logService));
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         public void StartPinger(RequestDto[] requests)
         {
@@ -30,6 +33,7 @@ namespace PingerApp.PingerManager
                 }
                 else
                 {
+                    _logger.LogError(result.ToString());
                     throw new Exception(result.ToString());
                 }
             }

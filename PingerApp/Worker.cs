@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using PingerApp.PingerManager;
 
 namespace PingerApp
@@ -19,16 +20,11 @@ namespace PingerApp
             _pingerManager = pingerManager ?? throw new ArgumentNullException(nameof(pingerManager));
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            try
-            {
-                _pingerManager.StartPinger(_options.Hosts);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            _pingerManager.StartPinger(_options.Hosts);
+
+            return Task.CompletedTask;
         }
     }
 }

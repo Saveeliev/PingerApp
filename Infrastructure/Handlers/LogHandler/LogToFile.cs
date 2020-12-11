@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Infrastructure.Handlers.LogHandler
 {
-    public class LogToFile : ILogger
+    public class LogToFile : ILogHandler
     {
         private static readonly object _locker = 0;
         private readonly LogOptions _options;

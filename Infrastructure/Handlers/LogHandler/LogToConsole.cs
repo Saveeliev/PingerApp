@@ -3,7 +3,7 @@ using System;
 
 namespace Infrastructure.Handlers.LogHandler
 {
-    public class LogToConsole : ILogger
+    public class LogToConsole : ILogHandler
     {
         public void LogHandler(object sender, PingHandlerArgs eventArgs)
         {

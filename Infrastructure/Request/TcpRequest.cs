@@ -4,15 +4,23 @@ using DTO.Response;
 using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Request
 {
     public class TcpRequest : IRequest
     {
+        private readonly ILogger _logger;
+
+        public TcpRequest(ILogger<TcpRequest> logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
         public async Task<ResponseDto> GetResponseAsync(RequestDto requestDto)
         {
             if (requestDto is null)
             {
+                _logger.LogError("RequestDto cannot be null");
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
